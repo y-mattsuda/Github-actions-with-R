@@ -40,3 +40,6 @@ vignettes/*.pdf
 
 # Git commit template
 .commit_template
+
+# environment file
+.env
