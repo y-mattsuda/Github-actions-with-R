@@ -6,7 +6,7 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 from slack_sdk.web import SlackResponse
 
-load_dotenv(override=True)
+load_dotenv()
 
 SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
 SLACK_TEST_CH_ID = os.getenv("SLACK_TEST_CH_ID")
@@ -29,4 +29,5 @@ def main() -> SlackResponse:
 
 
 if __name__ == "__main__":
-    main()
+    res = main()
+    print(res)
