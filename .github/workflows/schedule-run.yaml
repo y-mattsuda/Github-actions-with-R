@@ -1,7 +1,7 @@
 on:
   push:
     branch:
-      - master
+      - main
 
 jobs:
   run-ts-analysis:
