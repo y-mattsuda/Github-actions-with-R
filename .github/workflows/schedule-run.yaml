@@ -34,9 +34,7 @@ jobs:
           renv::restore()
 
       - name: Run analysis code
-        shell: Rscript {0}
-        run: |
-          source("R/run_ts_analysis.r")
+        run: Rscript R/run_ts_analysis.r
 
       - name: Remove output image
         run: rm -f Output/result1.png
