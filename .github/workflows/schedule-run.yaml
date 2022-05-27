@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         config:
-          - { os: ubuntu-latest, r: "release", python: "3.9" }
+          - { os: ubuntu-latest, r: "4.1.2", python: "3.9" }
     runs-on: ${{ matrix.config.os }}
     # Environment secretsを利用する場合はここで明示する.
     # environment: Actions-with-R
