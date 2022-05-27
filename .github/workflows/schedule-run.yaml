@@ -1,0 +1,43 @@
+on:
+  push:
+    branch:
+      - master
+
+jobs:
+  run-ts-analysis:
+    strategy:
+      matrix:
+        config:
+          - { os: ubuntu-latest, r: "release", python: "3.9" }
+    runs-on: ${{ matrix.config.os }}
+
+    env:
+      RENV_PATHS_ROOT: ~/.local/share/renv
+      OUTPUT_IMG_PATH: Output/result1.png
+
+    steps:
+      - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: ${{ matrix.config.r }}
+
+      - name: Cache R packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.RENV_PATHS_ROOT }}
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv
+
+      - name: Restore R packages
+        shell: Rscript {0}
+        run: |
+          if (!require("renv", quietly=TRUE)) install.packages("renv")
+          renv::restore()
+
+      - name: Run analysis code
+        shell: Rscript {0}
+        run: |
+          source("R/run_ts_analysis.r")
+
+      - name: Remove output image
+        run: rm -f ${{ OUTPUT_IMG_PATH }}
