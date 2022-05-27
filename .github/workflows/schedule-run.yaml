@@ -11,7 +11,7 @@ jobs:
         config:
           - { os: ubuntu-latest, r: "release", python: "3.9" }
     runs-on: ${{ matrix.config.os }}
-    environment: myenvironment
+    environment: Actions-with-R
 
     env:
       RENV_PATHS_ROOT: ~/.local/share/renv
