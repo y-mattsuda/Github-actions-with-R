@@ -73,7 +73,10 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_TEST_CH_ID: ${{ secrets.SLACK_TEST_CH_ID }}
-        run: poetry run python slack/file_sender.py Output/result1.png
+        run: |
+          echo "$SLACK_BOT_TOKEN"
+          echo "$SLACK_TEST_CH_ID"
+          poetry run python slack/file_sender.py Output/result1.png
 
       - name: Remove output image
         run: rm -f Output/result1.png
