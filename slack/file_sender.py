@@ -29,5 +29,6 @@ def main() -> SlackResponse:
 
 
 if __name__ == "__main__":
+    print(SLACK_BOT_TOKEN)
     res = main()
     print(res)
