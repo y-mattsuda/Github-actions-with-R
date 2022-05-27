@@ -6,7 +6,7 @@ R -q -e "library(renv)"
 R -q -e "renv::restore()"
 
 # run R code
-R -q -e "source('R/run_ts_analysis.r')"
+Rscript R/run_ts_analysis.r
 
 # run Python code
 poetry run python slack/file_sender.py Output/result1.png
